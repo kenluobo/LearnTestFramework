@@ -58,8 +58,18 @@ set(INCLUDE_OUTPUT_DIR "${CMAKE_BINARY_DIR}/include")
 set(CPM_SOURCE_CACHE "${CMAKE_BINARY_DIR}/third-party")
 
 include(cmake/CPM.cmake)
-cpmaddpackage(NAME googletest URL "https://github.com/google/googletest.git"
-              GIT_TAG "v1.15.2")
+cpmaddpackage(
+  NAME
+  googletest
+  GITHUB_REPOSITORY
+  google/googletest
+  GIT_TAG
+  v1.15.2
+  VERSION
+  1.15.2
+  OPTIONS
+  "INSTALL_GTEST OFF"
+  "gtest_force_shared_crt")
 
 option(ENABLE_TESTS "Run test cases" ON)
 if(${ENABLE_TESTS})
